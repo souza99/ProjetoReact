@@ -8,6 +8,7 @@ class Calculadora extends React.Component{
         this.state = {valor1:'', valor2:'', resultado:''};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.limpar = this.limpar.bind(this);
     }
 
     handleChange(event){
@@ -17,7 +18,11 @@ class Calculadora extends React.Component{
     handleSubmit(event){
         event.preventDefault();
         let resultado = parseInt(this.state.valor1) + parseInt(this.state.valor1);
-        alert(resultado);
+        this.setState({resultado:resultado});
+    }
+
+    limpar(event){
+        this.setState({valor1:'', valor2:'', resultado:''});
     }
 
     render(){
@@ -27,14 +32,19 @@ class Calculadora extends React.Component{
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Primeiro valor<br/>
-                        <input type="text" onChange={this.handleChange} name="valor1" /><br/><br/>
+                        <input type="text" onChange={this.handleChange} name="valor1" value={this.state.valor1} /><br/><br/>
                     </label>
                     <label>
                         Segundo valor<br/>
-                        <input type="text" onChange={this.handleChange} name="valor2" /><br /><br />
+                        <input type="text" onChange={this.handleChange} name="valor2" value={this.state.valor2}/><br /><br />
                     </label>
                     <input type="submit" value="Calcular"/>
+                    <input type="button" value="Limpar" onClick={this.limpar}/>
                 </form>
+
+                <p>
+                    {this.state.resultado}
+                </p>
             </div>
         );
     }
