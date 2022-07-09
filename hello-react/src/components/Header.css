@@ -1,0 +1,14 @@
+.align {
+    display: flex;
+    vertical-align: middle;
+    background-color: #3e36ad;
+    border-radius: 2px;
+    color: #ffffff;
+    width: 100%;
+    height: 100px;
+
+}
+
+.Header{
+    margin: 8px;
+}
